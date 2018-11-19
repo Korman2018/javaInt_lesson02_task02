@@ -69,10 +69,10 @@ public class ExpressionCalculator {
 
                 while (tryPop(stack)) {
                     String tempToken = stack.pop();
-                    if (priority(currentToken) <= priority(tempToken)) {
+                    if (getPriority(currentToken) <= getPriority(tempToken)) {
                         outputQueue.add(tempToken);
                     } else {
-                        //if current token priority > stack token priority -> add token back into stack
+                        //if current token getPriority > stack token getPriority -> add token back into stack
                         stack.push(tempToken);
                         break;
                     }
@@ -184,7 +184,7 @@ public class ExpressionCalculator {
         return true;
     }
 
-    private static int priority(String token) {
+    private static int getPriority(String token) {
         switch (token) {
             case "+":
             case "-":
